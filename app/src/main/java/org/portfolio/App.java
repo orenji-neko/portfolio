@@ -1,4 +1,6 @@
 package org.portfolio;
+import org.console.*;
+
 
 public class App {
 
@@ -7,6 +9,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Thread mainthread = new Thread(new Console());
+        mainthread.start();
     }
 }
