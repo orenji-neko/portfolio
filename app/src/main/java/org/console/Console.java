@@ -11,7 +11,7 @@ public class Console implements Runnable {
     /**
      * <p> This is the bool for the Console mainloop.
      */
-    private boolean state = false;
+    //private boolean state = false;
 
     @Override
     public void run() {
