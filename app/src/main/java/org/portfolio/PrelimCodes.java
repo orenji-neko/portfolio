@@ -8,7 +8,7 @@ public class PrelimCodes {
      * <h4>Prelim Act 01</h4>
      * <p>Hello World</p>
      */
-    public void hello() {
+    public static void hello() {
         System.out.println("Hello World!");
     }
 
@@ -16,7 +16,7 @@ public class PrelimCodes {
      * <h4>Prelim Act 02</h4>
      * <p>The tree</p>
      */
-    public void theTree() {
+    public static void theTree() {
         System.out.printf("I think that I shall never see,%na poem as lovely as a tree.%nA tree whose hungry mouth is pressed%nAgainst the Earth's sweet flowing breast.");
     }
 
@@ -24,7 +24,7 @@ public class PrelimCodes {
      * <h4>Prelim Act 03A</h4>
      * <p>Input output using Console </p>
      */
-    public void profile() {
+    public static void profile() {
         // Console profile
         Scanner scan = new Scanner(System.in);
         String name, address;
@@ -43,7 +43,7 @@ public class PrelimCodes {
      * <h4>Prelim Act 03B</h4>
      * <p>Input using console - 2</p>
      */
-    public void operations() {
+    public static void operations() {
         int a, b;
         Scanner scan = new Scanner(System.in);
 
@@ -60,7 +60,7 @@ public class PrelimCodes {
      * <h4>Prelim Act 03C</h4>
      * <p>Input using JOptionPane</p>
      */
-    public void profileJOption() {
+    public static void profileJOption() {
 
         //JOptionPane profile
         String name;
@@ -75,7 +75,7 @@ public class PrelimCodes {
      * <p>Create a Class with properties and methods 
      * that you can use for your selected object.</p>
      */
-    public void dinosaur() {
+    public static void dinosaur() {
         System.out.println("Hello World!");
         Dinosaur trex = new Dinosaur("Tyrannosaurus Rex", "Rex");
         Dinosaur velociraptor = new Dinosaur("Velociraptor", "Charlie");
@@ -86,7 +86,7 @@ public class PrelimCodes {
         trex.die();
         velociraptor.die();
     }
-    private class Dinosaur {
+    private static class Dinosaur {
    
         String species, name;
         
