@@ -106,10 +106,8 @@ public class Console {
                     break;
                 case 's':
                     System.out.println("""
-                        1 - SF-Act#01
-                        2 - SF-Act#02
-                        3 - SF-Act#03
-                        4 - SF-Act#04
+                        1 - SF-Act#09 - String Manipulation
+                        2 - SF-Act#10 - Working with arrays
                         """);
                     break;
                 case 'f':
@@ -128,7 +126,7 @@ public class Console {
         public void callFunctions(char mainOption, int subOption, BufferedReader buffer) {
             switch(mainOption) {
                 case 'p': 
-                    switch(subOption) { // prelim functions
+                    switch(subOption) { // prelim methods
                         case '1': PrelimCodes.hello(); break;
                         case '2': PrelimCodes.theTree(); break;
                         case '3': // since there are 3 acts
@@ -138,11 +136,16 @@ public class Console {
                             break;
                         case '4': PrelimCodes.dinosaur(); break;
                 }
-                case 'm':
-                    switch(subOption) { // midterm functions
+                case 'm': // midterm methods
+                    switch(subOption) {
                         case '1': MidtermCodes.gradeEquivalent(buffer); break;
                         case '2': MidtermCodes.avgOfSeveral(buffer); break;
                         case '3': MidtermCodes.nestedGrading(buffer); break;
+                    }
+                case 's': // semifinals methods
+                    switch(subOption) {
+                        case '1': SemiCodes.stringActivity(); break;
+                        case '2': SemiCodes.sortArrays(buffer); break;
                     }
             }
         }
