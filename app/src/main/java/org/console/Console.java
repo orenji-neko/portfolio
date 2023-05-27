@@ -3,7 +3,7 @@ package org.console;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import org.portfolio.PrelimCodes;
+import org.portfolio.*;
 
 /**
  * <h3> 
@@ -70,12 +70,12 @@ public class Console {
         // mainOption must be lowercased
         public void run(BufferedReader buffer, char mainOption) throws IOException {
             char subOption;
-            displaySubMenu(mainOption); // display everything
             while(state) {
+                displaySubMenu(mainOption); // display everything
                 System.out.print("choice > ");
                 subOption = Character.toLowerCase(buffer.readLine().charAt(0));
                 if(Character.isDigit(subOption)) {
-                    callFunctions(mainOption, subOption);
+                    callFunctions(mainOption, subOption, buffer);
                 } else if(subOption == 'x') {
                     state = false;
                 }
@@ -91,18 +91,17 @@ public class Console {
             switch(option) {
                 case 'p':
                     System.out.println("""
-                        1 - Pre-Act#01
-                        2 - Pre-Act#02
-                        3 - Pre-Act#03
-                        4 - Pre-Act#04
+                        1 - Pre-Act#01 - Hello World
+                        2 - Pre-Act#02 - The Tree
+                        3 - Pre-Act#03 - Input/Output
+                        4 - Pre-Act#04 - Methods, Classes, and Objects
                             """);
                     break;
                 case 'm':
                     System.out.println("""
-                        1 - Mid-Act#01
-                        2 - Mid-Act#02
-                        3 - Mid-Act#03
-                        4 - Mid-Act#04
+                        1 - Mid-Act#05 - Switch Case
+                        2 - Mid-Act#06 - Loops
+                        3 - Mid-Act#07 - Nested Loops
                             """);
                     break;
                 case 's':
@@ -126,13 +125,13 @@ public class Console {
         }
 
         // call Functions
-        public void callFunctions(char mainOption, int subOption) {
+        public void callFunctions(char mainOption, int subOption, BufferedReader buffer) {
             switch(mainOption) {
                 case 'p': 
                     switch(subOption) { // prelim functions
                         case '1': PrelimCodes.hello(); break;
                         case '2': PrelimCodes.theTree(); break;
-                        case '3':
+                        case '3': // since there are 3 acts
                             PrelimCodes.profile();
                             PrelimCodes.operations();
                             PrelimCodes.profileJOption();
@@ -141,8 +140,9 @@ public class Console {
                 }
                 case 'm':
                     switch(subOption) { // midterm functions
-                        case '1':
-                            break;
+                        case '1': MidtermCodes.gradeEquivalent(buffer); break;
+                        case '2': MidtermCodes.avgOfSeveral(buffer); break;
+                        case '3': MidtermCodes.nestedGrading(buffer); break;
                     }
             }
         }
