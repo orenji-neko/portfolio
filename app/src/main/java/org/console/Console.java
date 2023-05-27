@@ -23,25 +23,24 @@ public class Console {
     }
 
     public void run(BufferedReader buffer) {
-        String option;
-        displayMainMenu();
+        char option;
         while(state) {
+            displayMainMenu(); // mainmenu
             try {
-                displayMainMenu();
                 System.out.print("choice > ");
-                option = buffer.readLine();
-                switch(Character.toLowerCase(option.charAt(0))) {
+                option = buffer.readLine().charAt(0); // reads input first character
+                switch(Character.toLowerCase(option)) {
                     case 'p', 'm', 's', 'f':
-                        new SubMenu(buffer).run(Character.toLowerCase(option.charAt(0))); // sub loop
+                        new SubMenu().run(buffer, Character.toLowerCase(option));
                         break;
-                    case 'x':
-                        state = false; // break the loop
+                    case 'x': // exit program
+                        state = false;
                         break;
                     default:
-                        System.out.println("Unknown input!");
+                        System.out.println("unknown choice!");
                         break;
                 }
-            } catch(IOException ioException) {
+            } catch(IOException ioException) { // buffer errors, what to do if it happens? 
                 ioException.printStackTrace();
             }
         }
@@ -60,56 +59,92 @@ public class Console {
                 """);
     }
 
-    /**
-     * Sub Menu Class
-     */
+    // all submenus
     private class SubMenu {
         private boolean state;
-        private BufferedReader buffer;
 
-        public SubMenu(BufferedReader buffer) {
+        SubMenu() {
             state = true;
-            this.buffer = buffer;
         }
-
-        public void run(char option) throws IOException {
-            System.out.println("""
-                    =================================
-                    S U B  -  M E N U
-                    =================================
-                    """);
-            displaySubMenu(option);
+        
+        // mainOption must be lowercased
+        public void run(BufferedReader buffer, char mainOption) throws IOException {
+            char subOption;
+            displaySubMenu(mainOption); // display everything
             while(state) {
                 System.out.print("choice > ");
-                option = buffer.readLine().charAt(0);
-                switch(Character.toLowerCase(option)) {
-                    case '1':
-                        PrelimCodes.hello();
-                        break;
-                    default:
-                        System.out.println("error! no command");
-                        break;
-                    case 'x':
-                        state = false;
-                        break;
+                subOption = Character.toLowerCase(buffer.readLine().charAt(0));
+                if(Character.isDigit(subOption)) {
+                    callFunctions(mainOption, subOption);
+                } else if(subOption == 'x') {
+                    state = false;
                 }
             }
         }
 
-        private void displaySubMenu(char option) {
-            switch(Character.toLowerCase(option)) {
+        // important sub menu displays
+        public void displaySubMenu(char option) {
+            System.out.println("""
+                    =================================
+                    S U B  -  M E N U
+                    =================================""");
+            switch(option) {
                 case 'p':
                     System.out.println("""
                         1 - Pre-Act#01
                         2 - Pre-Act#02
                         3 - Pre-Act#03
-                        4 - Pre-Act#04""");
+                        4 - Pre-Act#04
+                            """);
                     break;
-                default:
-                    System.out.println("Not yet implemented!");
+                case 'm':
+                    System.out.println("""
+                        1 - Mid-Act#01
+                        2 - Mid-Act#02
+                        3 - Mid-Act#03
+                        4 - Mid-Act#04
+                            """);
+                    break;
+                case 's':
+                    System.out.println("""
+                        1 - SF-Act#01
+                        2 - SF-Act#02
+                        3 - SF-Act#03
+                        4 - SF-Act#04
+                        """);
+                    break;
+                case 'f':
+                    System.out.println("""
+                        1 - Finals-Act#01
+                        2 - Finals-Act#02
+                        3 - Finals-Act#03
+                        4 - Finals-Act#04
+                        """);
                     break;
             }
-            System.out.println("X - Main Menu");
+            System.out.println("X - Exit");
+        }
+
+        // call Functions
+        public void callFunctions(char mainOption, int subOption) {
+            switch(mainOption) {
+                case 'p': 
+                    switch(subOption) { // prelim functions
+                        case '1': PrelimCodes.hello(); break;
+                        case '2': PrelimCodes.theTree(); break;
+                        case '3':
+                            PrelimCodes.profile();
+                            PrelimCodes.operations();
+                            PrelimCodes.profileJOption();
+                            break;
+                        case '4': PrelimCodes.dinosaur(); break;
+                }
+                case 'm':
+                    switch(subOption) { // midterm functions
+                        case '1':
+                            break;
+                    }
+            }
         }
     }
 }

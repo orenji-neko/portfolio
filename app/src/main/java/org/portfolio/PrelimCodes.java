@@ -17,7 +17,7 @@ public class PrelimCodes {
      * <p>The tree</p>
      */
     public static void theTree() {
-        System.out.printf("I think that I shall never see,%na poem as lovely as a tree.%nA tree whose hungry mouth is pressed%nAgainst the Earth's sweet flowing breast.");
+        System.out.printf("I think that I shall never see,%na poem as lovely as a tree.%nA tree whose hungry mouth is pressed%nAgainst the Earth's sweet flowing breast.\n");
     }
 
     /**
