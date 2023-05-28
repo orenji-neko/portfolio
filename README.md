@@ -13,8 +13,3 @@ Then run the project. If you're using Linux or Mac:
 ./gradlew assemble
 ./gradlew run
 ```
-If you're using Windows:
-```
-gradlew assemble
-gradlew run
-```
